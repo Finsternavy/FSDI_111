@@ -4,6 +4,7 @@ from flask import (
 )
 
 from datetime import datetime
+from app.database import user
 
 app = Flask(__name__)
 
@@ -36,7 +37,7 @@ def get_all_users():
     return out
 
 @app.get("/users/<int:pk>")
-def get_user_by_id():
+def get_user_by_id(pk):
     record = user.select_by_id(pk)
     out = {
         "status": "ok",
