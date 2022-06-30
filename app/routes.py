@@ -4,7 +4,7 @@ from flask import (
 )
 
 from datetime import datetime
-from app.database import user
+from app.database import user, reports
 
 app = Flask(__name__)
 
@@ -61,3 +61,12 @@ def update_user(pk):
 def delete_user(pk):
     user.deactivate(pk)
     return "", 204
+
+@app.get("/users/report")
+def generate_report():
+    report = reports.generate_report()
+    out = {
+        "status": "ok",
+        "user": report
+    }
+    return out
