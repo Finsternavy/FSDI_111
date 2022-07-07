@@ -22,7 +22,7 @@ def ping():
 def get_version():
     out = {
         "status": "ok",
-        "message": VERSION,
+        "version": VERSION,
         "server_time": datetime.now().strftime("%F %H:%M:%S")
     }
     return out
@@ -32,7 +32,7 @@ def get_all_users():
     user_list = user.scan()
     out = {
         "status": "ok",
-        "user": user_list
+        "users": user_list
     }
     return out
 
